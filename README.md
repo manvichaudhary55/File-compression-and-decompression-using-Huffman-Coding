@@ -1,4 +1,4 @@
-# 📦 Huff-Compress: Text File Compression Using Huffman Coding
+# 📦 File Compression and Decompression using Huffman coding.
 
 > ⚠️ **Status**: This project is currently in the **working phase**. Some features may be incomplete or under development.
 
