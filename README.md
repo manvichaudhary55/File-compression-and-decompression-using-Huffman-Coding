@@ -91,7 +91,8 @@ g++ -Iinclude src/huffman.cpp src/utils.cpp src/main.cpp -o output/huffman.exe
 
 ```powershell
 cd output
-.\huffman.exe -c ..\test_files\sample.txt compressed.bin
+./huffman.exe -c ..\test_files\sample.txt compressed.bin
+./huffman.exe -d compressed.bin decompressed.txt
 ```
 
 ## Running the Program
@@ -101,11 +102,11 @@ After building, the executable will be in the `output` directory.
 ### For file compression:
 
 ```
-./output/huffman -c test_files/sample.txt compressed.bin
+./huffman.exe -c ..\test_files\sample.txt compressed.bin
 ```
 
 ### For file decompression:
 
 ```
-./output/huffman -d compressed.bin decompressed.txt
+./huffman.exe -d compressed.bin decompressed.txt
 ```
