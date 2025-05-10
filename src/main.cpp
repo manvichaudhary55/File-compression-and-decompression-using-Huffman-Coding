@@ -1,19 +1,37 @@
 #include <iostream>
-#include <map>
 #include <string>
+#include "../include/huffman.h"
+#include "../include/utils.h"
 
-void compressFile(const char *path, const char *output_path, std::map<unsigned char, std::string> &codes);
-void decompressFile(const char *inputPath, const char *outputPath);
+using namespace std;
 
-int main() {
-    const char *inputFile = "test_files/sample.txt";
-    const char *compressedFile = "output/compressed.txt";
-    const char *decompressedFile = "output/decompressed.txt";
+int main(int argc, char *argv[]) {
+    if (argc < 4) {
+        cout << "Usage: " << endl;
+        cout << "For compression: " << argv[0] << " -c input_file output_file" << endl;
+        cout << "For decompression: " << argv[0] << " -d input_file output_file" << endl;
+        return 1;
+    }
 
-    std::map<unsigned char, std::string> codes;
-    compressFile(inputFile, compressedFile, codes);
-    decompressFile(compressedFile, decompressedFile);
-
-    std::cout << "Compression and decompression completed successfully!" << std::endl;
+    string mode = argv[1];
+    const char *inputFile = argv[2];
+    const char *outputFile = argv[3];
+    
+    if (mode == "-c") {
+        // Compression mode
+        map<unsigned char, string> codes;
+        compressFile(inputFile, outputFile, codes);
+        cout << "Compression completed successfully!" << endl;
+    } 
+    else if (mode == "-d") {
+        // Decompression mode
+        decompressFile(inputFile, outputFile);
+        cout << "Decompression completed successfully!" << endl;
+    }
+    else {
+        cout << "Invalid mode. Use -c for compression or -d for decompression." << endl;
+        return 1;
+    }
+    
     return 0;
 }
