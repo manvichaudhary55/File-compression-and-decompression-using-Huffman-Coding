@@ -67,3 +67,5 @@ HuffmanCompression/
 This tool works best with uncompressed, text-based files:
 
 - `.txt`, `.csv`, `.json`, `.xml`, `.log`, `.html`, `.yaml`
+
+  Thank You!
