@@ -1,5 +1,9 @@
-#include "../include/huffman.h"
 #include <iostream>
+#include <map>
+#include <string>
+
+void compressFile(const char *path, const char *output_path, std::map<unsigned char, std::string> &codes);
+void decompressFile(const char *inputPath, const char *outputPath);
 
 int main() {
     const char *inputFile = "test_files/sample.txt";
