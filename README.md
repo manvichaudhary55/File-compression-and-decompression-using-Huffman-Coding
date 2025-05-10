@@ -68,4 +68,44 @@ This tool works best with uncompressed, text-based files:
 
 - `.txt`, `.csv`, `.json`, `.xml`, `.log`, `.html`, `.yaml`
 
-  Thank You!
+## How to Run.
+
+### On Unix/Linux/macOS:
+
+```bash
+mkdir -p output
+g++ -Iinclude src/huffman.cpp src/utils.cpp src/main.cpp -o output/huffman
+```
+
+### On Windows with MinGW:
+
+1. Ensure MinGW is installed and added to your PATH
+2. Open PowerShell or Command Prompt and navigate to the project folder
+3. Compile it using:
+
+```powershell
+g++ -Iinclude src/huffman.cpp src/utils.cpp src/main.cpp -o output/huffman.exe
+```
+
+4. Run the program from the output directory:
+
+```powershell
+cd output
+.\huffman.exe -c ..\test_files\sample.txt compressed.bin
+```
+
+## Running the Program
+
+After building, the executable will be in the `output` directory.
+
+### For file compression:
+
+```
+./output/huffman -c test_files/sample.txt compressed.bin
+```
+
+### For file decompression:
+
+```
+./output/huffman -d compressed.bin decompressed.txt
+```
