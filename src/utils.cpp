@@ -62,11 +62,7 @@ void writeFileFromBuffer(const char *path, unsigned char *buffer, int sz, int fl
 
 // Convert map to vector
 vector<pair<unsigned char, int>> convertToVector(map<unsigned char, int> codes) {
-    vector<pair<unsigned char, int>> codesV;
-    for (map<unsigned char, int>::iterator i = codes.begin(); i != codes.end(); i++) {
-        codesV.push_back(make_pair(i->first, i->second));
-    }
-    return codesV;
+    return vector<pair<unsigned char, int>>(codes.begin(), codes.end());
 }
 
 // Convert bitstring to buffer
