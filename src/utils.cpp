@@ -9,7 +9,6 @@
 
 using namespace std;
 
-// Convert byte to binary string
 string toBinary(unsigned char a) {
     string output = "";
     while (a != 0) {
@@ -27,7 +26,6 @@ string toBinary(unsigned char a) {
     return output;
 }
 
-// Read file into buffer
 unsigned char *readFileIntoBuffer(const char *path, int &sz) {
     FILE *fp = fopen(path, "rb");
     if (fp == nullptr) {
@@ -44,7 +42,6 @@ unsigned char *readFileIntoBuffer(const char *path, int &sz) {
     return buffer;
 }
 
-// Write buffer to file
 void writeFileFromBuffer(const char *path, unsigned char *buffer, int sz, int flag) {
     FILE *fp;
     if (flag == 0) {
@@ -60,12 +57,10 @@ void writeFileFromBuffer(const char *path, unsigned char *buffer, int sz, int fl
     fclose(fp);
 }
 
-// Convert map to vector
 vector<pair<unsigned char, int>> convertToVector(map<unsigned char, int> codes) {
     return vector<pair<unsigned char, int>>(codes.begin(), codes.end());
 }
 
-// Convert bitstring to buffer
 unsigned char *getBufferFromString(string bitstring, vector<unsigned char> &outputBuffer, int &sz) {
     int interval = 0;
     unsigned char bit = 0;
@@ -82,7 +77,6 @@ unsigned char *getBufferFromString(string bitstring, vector<unsigned char> &outp
     return outputBuffer.data();
 }
 
-// Convert buffer to bitstring
 string getStringFromBuffer(unsigned char *buffer, int sz) {
     string bitstring = "";
     for (int i = 0; i < sz; i++) {
@@ -91,7 +85,6 @@ string getStringFromBuffer(unsigned char *buffer, int sz) {
     return bitstring;
 }
 
-// Decode buffer from Huffman-encoded bitstring
 unsigned char *getDecodedBuffer(string bitstring, vector<unsigned char> &buffer, map<unsigned char, string> codes,
                                 int &sz, int paddedBits) {
     string bit = "";
@@ -110,7 +103,6 @@ unsigned char *getDecodedBuffer(string bitstring, vector<unsigned char> &buffer,
     return buffer.data();
 }
 
-// Write header to compressed file
 void writeHeader(const char *path, map<unsigned char, string> codes, int paddedBits) {
     int size = codes.size();
     writeFileFromBuffer(path, (unsigned char *) &paddedBits, sizeof(int), 0);
@@ -124,7 +116,6 @@ void writeHeader(const char *path, map<unsigned char, string> codes, int paddedB
     }
 }
 
-// Read header from compressed file
 unsigned char *readHeader(unsigned char *buffer, map<unsigned char, string> &codes, int &paddedBits, int &sz) {
     paddedBits = *((int *) buffer);
     buffer = buffer + 4;
