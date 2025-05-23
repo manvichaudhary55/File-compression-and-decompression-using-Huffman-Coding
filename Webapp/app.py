@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "output"
-HUFFMAN_EXE = os.path.abspath("huffman.exe")
+HUFFMAN_EXE = "huffman.exe"
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
@@ -17,7 +17,7 @@ def index():
 @app.route("/compress", methods=["POST"])
 def compress():
     file = request.files["file"]
-    input_path = os.path.join(UPLOAD_FOLDER, "input.txt")
+    input_path = os.path.join(UPLOAD_FOLDER, file.filename)
     output_path = os.path.join(OUTPUT_FOLDER, "compressed.txt")
     file.save(input_path)
 
@@ -28,7 +28,7 @@ def compress():
 @app.route("/decompress", methods=["POST"])
 def decompress():
     file = request.files["file"]
-    input_path = os.path.join(UPLOAD_FOLDER, "compressed.txt")
+    input_path = os.path.join(UPLOAD_FOLDER, file.filename)
     output_path = os.path.join(OUTPUT_FOLDER, "decompressed.txt")
     file.save(input_path)
 
