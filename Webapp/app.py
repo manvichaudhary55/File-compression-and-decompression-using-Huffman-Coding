@@ -10,6 +10,9 @@ HUFFMAN_EXE = "huffman.exe"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
+if not os.path.exists(HUFFMAN_EXE):
+    raise RuntimeError(f"Executable not found: {HUFFMAN_EXE}")
+
 @app.route("/")
 def index():
     return render_template("index.html")
